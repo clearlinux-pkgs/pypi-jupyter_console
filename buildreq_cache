@@ -1,6 +1,0 @@
-6.4.0
-pypi(ipykernel)
-pypi(ipython)
-pypi(jupyter_client)
-pypi(prompt_toolkit)
-pypi(pygments)
