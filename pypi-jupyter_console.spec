@@ -4,7 +4,7 @@
 #
 Name     : pypi-jupyter_console
 Version  : 6.4.4
-Release  : 59
+Release  : 60
 URL      : https://files.pythonhosted.org/packages/1b/2f/acb5851aa3ed730f8cde5ec9eb0c0d9681681123f32c3b82d1536df1e937/jupyter_console-6.4.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1b/2f/acb5851aa3ed730f8cde5ec9eb0c0d9681681123f32c3b82d1536df1e937/jupyter_console-6.4.4.tar.gz
 Summary  : Jupyter terminal console
@@ -81,7 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655999221
+export SOURCE_DATE_EPOCH=1666712315
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -103,7 +103,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-jupyter_console
-cp %{_builddir}/jupyter_console-6.4.4/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyter_console/4864371bd27fe802d84990e2a5ee0d60bb29e944
+cp %{_builddir}/jupyter_console-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyter_console/4864371bd27fe802d84990e2a5ee0d60bb29e944 || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
