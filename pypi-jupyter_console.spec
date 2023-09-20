@@ -4,20 +4,19 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-jupyter_console
-Version  : 6.5.1
-Release  : 65
-URL      : https://files.pythonhosted.org/packages/d6/f3/e04425653295782b0031922186d4e5bd325624c94a4d6287d095457ef1ac/jupyter_console-6.5.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/d6/f3/e04425653295782b0031922186d4e5bd325624c94a4d6287d095457ef1ac/jupyter_console-6.5.1.tar.gz
+Version  : 6.6.3
+Release  : 66
+URL      : https://files.pythonhosted.org/packages/bd/2d/e2fd31e2fc41c14e2bcb6c976ab732597e907523f6b2420305f9fc7fdbdb/jupyter_console-6.6.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/bd/2d/e2fd31e2fc41c14e2bcb6c976ab732597e907523f6b2420305f9fc7fdbdb/jupyter_console-6.6.3.tar.gz
 Summary  : Jupyter terminal console
 Group    : Development/Tools
-License  : BSD-3-Clause-Clear
+License  : BSD-3-Clause
 Requires: pypi-jupyter_console-bin = %{version}-%{release}
 Requires: pypi-jupyter_console-license = %{version}-%{release}
 Requires: pypi-jupyter_console-python = %{version}-%{release}
 Requires: pypi-jupyter_console-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pypi(setuptools)
-BuildRequires : pypi(wheel)
+BuildRequires : pypi(hatchling)
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -72,10 +71,10 @@ python3 components for the pypi-jupyter_console package.
 
 
 %prep
-%setup -q -n jupyter_console-6.5.1
-cd %{_builddir}/jupyter_console-6.5.1
+%setup -q -n jupyter_console-6.6.3
+cd %{_builddir}/jupyter_console-6.6.3
 pushd ..
-cp -a jupyter_console-6.5.1 buildavx2
+cp -a jupyter_console-6.6.3 buildavx2
 popd
 
 %build
@@ -83,7 +82,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695151242
+export SOURCE_DATE_EPOCH=1695223965
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -105,7 +104,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-jupyter_console
-cp %{_builddir}/jupyter_console-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyter_console/4864371bd27fe802d84990e2a5ee0d60bb29e944 || :
+cp %{_builddir}/jupyter_console-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-jupyter_console/a2539650cfdf8871b9737115b20d5f8e48e8ab7b || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -129,7 +128,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-jupyter_console/4864371bd27fe802d84990e2a5ee0d60bb29e944
+/usr/share/package-licenses/pypi-jupyter_console/a2539650cfdf8871b9737115b20d5f8e48e8ab7b
 
 %files python
 %defattr(-,root,root,-)
